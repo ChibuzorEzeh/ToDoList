@@ -1,0 +1,94 @@
+body{
+   text-align: center;
+   background-color: black;
+}
+
+input{
+   padding: 5px;
+   border-radius: 5px;
+   background-color: transparent;
+   border: 1px solid white;
+   color: white;
+}
+.addBtn{
+   padding: 5px 9px;
+   margin-left: 10px;
+   border: 1px solid black;
+   font-weight: 900;
+   border-radius: 5px;
+   cursor: pointer;
+   background: rgb(0, 247, 0);
+}
+button:active{
+   transform: scale(.98);
+} 
+
+
+.lists button {
+   padding: 6px 12px;
+   margin-left: 5px;
+   font-weight: 600;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: 0.5s ease all;
+}
+.text{
+   flex: 1;
+   font-weight: 900;
+   font-size: 1.5rem;
+}
+.deleteBtn{
+   background-color: black;
+   color: white;
+   border: 1px solid white;
+}
+
+.moveBtn{
+   background-color: black;
+   color: white;
+   border: 1px solid white;
+}
+
+.lists{
+   border: none;
+   border-radius: 5px;
+   display: flex;
+   align-items: center;
+   margin-bottom: 20px;
+   padding: 15px;
+   position: relative;
+   background-color: black;
+   color: white;
+}
+@property --angle {
+   syntax: "<angle>";
+   initial-value: 0deg;
+   inherits: false;
+}
+.lists::after, .lists::before{
+   content: "";
+    top: 50%;
+    left: 50%;
+    background-image: conic-gradient(from var(--angle), transparent -99%, white,white, black, white);
+    translate: -50% -50%;
+    position: absolute;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+    padding: 1px;
+    border-radius: inherit;
+    animation: spin 12s infinite linear;
+ 
+}
+.lists::before {
+   filter: blur(3px);
+}
+
+@keyframes spin {
+   from{
+      --angle: 0deg ;
+   }
+   to{
+      --angle: 360deg
+   }
+}
