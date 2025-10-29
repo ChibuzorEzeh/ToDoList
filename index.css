@@ -46,7 +46,7 @@ button:active{
 }
 
 .moveBtn{
-   background-color: black;
+   background-color: rgb(96, 96, 226);
    color: white;
    border: 1px solid white;
 }
