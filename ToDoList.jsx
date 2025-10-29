@@ -1,7 +1,9 @@
 import { useState } from "react";
 
 function ToDoList() {
+
   const [tasks, setTasks] = useState(["walk the dog", "clear the grass"]);
+
   const [newTask, setNewTask] = useState("");
 
   const handleInputChange = (event) => {
@@ -29,6 +31,17 @@ function ToDoList() {
   };
   
 
+  const moveTaskDown = (index) =>  {
+    if (index < tasks.length - 1){
+         const updatedTask = [...tasks];
+      [updatedTask[index], updatedTask[index + 1]] = [
+        updatedTask[index + 1],
+        updatedTask[index],
+      ];
+      setTasks(updatedTask);
+    }
+  }
+
   return (
     <>
       <div className="inputArea">
@@ -48,7 +61,7 @@ function ToDoList() {
             <span className="text">{elem}</span>
             <button className="deleteBtn" onClick={() => deleteTask(index)}>Delete</button>
             <button className="moveBtn" onClick={() => moveTaskUp(index)}>Up</button>
-            <button className="moveBtn">Down</button>
+            <button onClick={ () => moveTaskDown (index)} className="moveBtn">Down</button>
           </li>
         ))}
       </ol>
