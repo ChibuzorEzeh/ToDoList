@@ -1,96 +1,149 @@
-body{
-   text-align: center;
-   background-color: black;
+body {
+  text-align: center;
+  background-color: black;
 }
 
-input{
-   padding: 5px;
-   border-radius: 5px;
-   background-color: transparent;
-   border: 1px solid white;
-   color: white;
+input {
+  padding: 5px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: rgb(0, 255, 0);
 }
-.addBtn{
-   padding: 5px 9px;
-   margin-left: 10px;
-   border: 1px solid black;
-   font-weight: 900;
-   border-radius: 5px;
-   cursor: pointer;
-   background:black; 
-   color: white;
-   border: 1px solid white;
+.addBtn {
+  padding: 5px 9px;
+  margin-left: 10px;
+  border: 1px solid black;
+  font-weight: 900;
+  border-radius: 5px;
+  cursor: pointer;
+  background: black;
+  animation: changeColor 10s infinite ;
+  color: var(--color);
+  border: 1px solid var(--color);
 }
-button:active{
-   transform: scale(.98);
-} 
-
+button:active {
+  transform: scale(0.98);
+}
 
 .lists button {
-   padding: 6px 12px;
-   margin-left: 5px;
-   font-weight: 600;
-   border-radius: 5px;
-   cursor: pointer;
-   transition: 0.5s ease all;
+  padding: 6px 12px;
+  margin-left: 5px;
+  font-weight: 600;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.25s ease all;
 }
-.text{
-   flex: 1;
-   font-weight: 900;
-   font-size: 1.5rem;
+.lists button:hover {
+  color: rgb(0, 255, 0);
+  border: 1px solid rgb(0, 255, 0);
 }
-.deleteBtn{
-   background-color: black;
-   color: white;
-   border: 1px solid white;
+.text {
+  flex: 1;
+  font-weight: 900;
+  font-size: 1.5rem;
+  transition: 0.5s ease all;
+  animation: fontChange 2s infinite linear;
+  transition: .2s ease all;
+  font-family: monospace;
+}
+.deleteBtn {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
 }
 
-.moveBtn{
-   background-color: black;
-   color: white;
-   border: 1px solid white;
+.moveBtn {
+  background-color: black;
+  color: white;
+  border: 1px solid white;
 }
 
-.lists{
-   border: none;
-   border-radius: 5px;
-   display: flex;
-   align-items: center;
-   margin-bottom: 20px;
-   padding: 15px;
-   position: relative;
-   background-color: black;
-   color: white;
+.lists {
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  position: relative;
+  background-color: black;
+  color: white;
+  cursor: pointer;
 }
+
 @property --angle {
-   syntax: "<angle>";
-   initial-value: 0deg;
-   inherits: false;
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
 }
-.lists::after, .lists::before{
-   content: "";
-    top: 50%;
-    left: 50%;
-    background-image: conic-gradient(from var(--angle), transparent -99%, white,white, black, white);
-    translate: -50% -50%;
-    position: absolute;
-    z-index: -1;
-    height: 100%;
-    width: 100%;
-    padding: 1px;
-    border-radius: inherit;
-    animation: spin 12s infinite linear;
- 
+.lists::after,
+.lists::before {
+  content: "";
+  top: 50%;
+  left: 50%;
+  background-image: conic-gradient(
+    from var(--angle),
+    transparent -99%,
+    white,
+    white,
+    black,
+    white
+  );
+  translate: -50% -50%;
+  position: absolute;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  padding: 1px;
+  border-radius: inherit;
+  animation: spin 12s infinite linear;
+}
+
+.lists:hover::after,
+.lists:hover::before {
+  background-image: conic-gradient(
+    from var(--angle),
+    transparent -99%,
+    rgb(0, 255, 0),
+    rgb(0, 255, 0),
+    black,
+    rgb(2, 255, 2)
+  );
 }
 .lists::before {
-   filter: blur(3px);
+  filter: blur(5px);
 }
 
 @keyframes spin {
-   from{
-      --angle: 0deg ;
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+.lists:hover .text {
+  color: rgb(0, 255, 0);
+  transform: scale(1.1);
+}
+@property --color {
+   syntax: "<color>";
+   inherits: false;
+   initial-value: white;
+}
+@keyframes changeColor {
+   0% {
+      --color: rgb(0, 255, 0) ; 
    }
-   to{
-      --angle: 360deg
+   40% {
+      --color: red ;
+   }
+   80%{
+      --color: rgb(253, 5, 253) ;
+   }
+   100%{
+      --color: rgb(0, 255, 0) ; 
    }
 }
+
