@@ -8,7 +8,8 @@ function ToDoList() {
     setNewTask(event.target.value);
   };
 
-  const addNewTask = () => {
+  const addNewTask = (e) => {
+    e.preventDefault()
     if (newTask.trim() !== "") {
       setTasks((t) => [...t, newTask]);
       setNewTask("");
@@ -42,15 +43,17 @@ function ToDoList() {
   return (
     <>
       <div className="inputArea">
+      <form onSubmit={addNewTask}>
         <input
           value={newTask}
           type="text"
           placeholder="add new task"
           onChange={handleInputChange}
         />
-        <button className="addBtn" onClick={addNewTask}>
+        <button className="addBtn">
           Add
         </button>
+        </form>
       </div>
       <ol>
         {tasks.map((elem, index) => (
