@@ -18,7 +18,9 @@ function ToDoList() {
     }
   };
   const deleteTask = (index) => {
-    setTasks((t) => t.filter((_, i) => i !== index));
+    setTimeout (() => {
+      setTasks((t) => t.filter((_, i) => i !== index));
+    }, 100)
   };
   const moveTaskUp = (index) => {
     if (index > 0) {
