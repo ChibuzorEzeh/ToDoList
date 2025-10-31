@@ -1,14 +1,28 @@
 body {
   text-align: center;
-  background-color: black;
+  background-image: url(./assets/thumbnail9.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: monospace;
+  color: black;
 }
 
 input {
   padding: 5px;
   border-radius: 5px;
   background-color: transparent;
-  border: 1px solid white;
-  color: rgb(0, 255, 0);
+  color: white;
+}
+input:focus {
+  outline: none;
+  border: none;
 }
 .addBtn {
   padding: 5px 9px;
@@ -18,9 +32,8 @@ input {
   border-radius: 5px;
   cursor: pointer;
   background: black;
-  animation: changeColor 10s infinite ;
-  color: var(--color);
-  border: 1px solid var(--color);
+  color: white;
+  border: 1px solid white;
 }
 button:active {
   transform: scale(0.98);
@@ -32,20 +45,12 @@ button:active {
   font-weight: 600;
   border-radius: 5px;
   cursor: pointer;
-  transition: 0.25s ease all;
-}
-.lists button:hover {
-  color: rgb(0, 255, 0);
-  border: 1px solid rgb(0, 255, 0);
+  transition: 0.5s ease all;
 }
 .text {
   flex: 1;
   font-weight: 900;
   font-size: 1.5rem;
-  transition: 0.5s ease all;
-  animation: fontChange 2s infinite linear;
-  transition: .2s ease all;
-  font-family: monospace;
 }
 .deleteBtn {
   background-color: black;
@@ -69,9 +74,7 @@ button:active {
   position: relative;
   background-color: black;
   color: white;
-  cursor: pointer;
 }
-
 @property --angle {
   syntax: "<angle>";
   initial-value: 0deg;
@@ -99,20 +102,8 @@ button:active {
   border-radius: inherit;
   animation: spin 12s infinite linear;
 }
-
-.lists:hover::after,
-.lists:hover::before {
-  background-image: conic-gradient(
-    from var(--angle),
-    transparent -99%,
-    rgb(0, 255, 0),
-    rgb(0, 255, 0),
-    black,
-    rgb(2, 255, 2)
-  );
-}
 .lists::before {
-  filter: blur(5px);
+  filter: blur(3px);
 }
 
 @keyframes spin {
@@ -123,27 +114,153 @@ button:active {
     --angle: 360deg;
   }
 }
-.lists:hover .text {
-  color: rgb(0, 255, 0);
-  transform: scale(1.1);
-}
-@property --color {
-   syntax: "<color>";
-   inherits: false;
-   initial-value: white;
-}
-@keyframes changeColor {
-   0% {
-      --color: rgb(0, 255, 0) ; 
-   }
-   40% {
-      --color: red ;
-   }
-   80%{
-      --color: rgb(253, 5, 253) ;
-   }
-   100%{
-      --color: rgb(0, 255, 0) ; 
-   }
+
+* {
+  box-sizing: border-box;
 }
 
+form {
+  width: 400px;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  outline: none;
+  position: relative;
+  color: black;
+  background: white;
+}
+
+.remember {
+  display: flex;
+  align-items: center;
+}
+#remmber {
+  flex: 1;
+}
+#rem {
+  white-space: nowrap;
+  margin-left: 70px;
+}
+#rem2 {
+  white-space: nowrap;
+  margin-left: 30px;
+}
+
+button {
+  padding: 8px 4px;
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: 900;
+  border-radius: 900px;
+  width: 100%;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  cursor: pointer;
+  transition: 0.5s ease;
+}
+button:active {
+  transform: scale(0.98);
+}
+h1 {
+  color: black;
+  text-align: center;
+}
+.register {
+  text-align: center;
+}
+a {
+  text-decoration: none;
+  font-weight: 900;
+  color: black;
+  font-size: 1.1em;
+}
+label,
+a {
+  white-space: nowrap;
+}
+#link {
+  margin-left: 70px;
+}
+
+.master {
+  position: relative;
+}
+.master input {
+  background: transparent;
+  border: none;
+  color: black;
+  border-bottom: 2px solid black;
+  width: 100%;
+}
+.master #hove1,
+.master #hove2 {
+  position: absolute;
+  left: 10px;
+  top: -2px;
+  transition: 0.25s ease;
+  z-index: 1;
+}
+
+input[type="checkbox"] {
+  accent-color: black;
+  cursor: pointer;
+  border-radius: 999px;
+}
+.message {
+  font-weight: 900;
+  font-size: 1.3em;
+  transition: 1s ease;
+  color: white;
+}
+.master input:focus + #hove1,
+.master input:not(:placeholder-shown) + #hove1,
+.master input:focus + #hove2,
+.master input:not(:placeholder-shown) + #hove2 {
+  top: -20px;
+  color: rgb(2, 85, 2);
+  font-weight: 900;
+}
+.formed::after,
+.formed::before {
+  position: absolute;
+  content: "";
+  background: conic-gradient(
+    from var(--angle),
+    rgb(0, 255, 0),
+    tomato,
+    yellow,
+    rgb(0, 255, 0)
+  );
+  inset: -4px;
+  z-index: -2;
+  padding: 1px;
+  box-sizing: border-box;
+  border-radius: inherit;
+  animation: spin 5s infinite linear;
+}
+.formed::before {
+  filter: blur(5px);
+}
+@property --angle {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 0deg;
+}
+@keyframes spin {
+  from {
+    --angle: 0deg;
+  }
+  to {
+    --angle: 360deg;
+  }
+}
+a {
+  transition: 0.25s ease;
+}
+a:hover {
+  color: rgb(89, 0, 255);
+}
