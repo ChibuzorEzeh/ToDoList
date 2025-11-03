@@ -263,3 +263,11 @@ a:hover {
   font-weight: 900;
   font-size: 1.4em;
 }
+#pI{
+  opacity: .65;
+  cursor: pointer;
+  transition: .5s ease all;
+}
+#pI:hover{
+  opacity: 1;
+}

@@ -1,20 +1,35 @@
 import { useState, useEffect } from "react";
 function Pokemon() {
   const [named, setName] = useState("");
-  const [result, setResult] = useState("");
+  const [pokemonData, setPokemonData] = useState(null);
   const [message, setMessage] = useState("");
+  
 
   function handleInputChange(e) {
     setName(e.target.value);
   }
 
+  async function checkPokemon(e) {
+    e.preventDefault();
 
-async function checkPokemon (e){
- e.preventDefault() ; 
-
- 
-}
-
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${named.toLowerCase()}`
+    );
+    console.log (response)
+    try {
+      if (!response.ok) {
+        throw new Error(`${named} is not a pokemon`);
+      }
+      if (named.trim() !== "") {
+        const data = await response.json();
+        setPokemonData(data)
+        setMessage(data.name);
+        console.log(data);
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   return (
     <>
@@ -32,6 +47,7 @@ async function checkPokemon (e){
         </form>
       </div>
       {message && <h1>{message}</h1>}
+      {pokemonData && <img id="pI" width= "100px" src={pokemonData.sprites.other["official-artwork"].front_default} alt="" />}
     </>
   );
 }
